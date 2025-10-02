@@ -1,22 +1,30 @@
 import MyButton from "@/components/MyButton";
 import { useRouter } from "expo-router";
-import React from "react";
+import React, { useState } from "react";
 import {
-    Dimensions,
-    Image,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 const { width } = Dimensions.get("window");
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+
   const router = useRouter();
 
-  const onLogin = () => console.log("Login pressed");
+  const onLogin = () => {
+    // Implement your login logic here
+    console.log("Logging in with:", { email, password });
+    console.log("Login pressed");
+  };
   const onRegister = () => router.push("/signup");
   const onForgot = () => router.push("/forgot");
 
@@ -38,18 +46,22 @@ const Login = () => {
 
             <TextInput
               style={styles.input}
+              value={email}
+              onChangeText={(e) => setEmail(e)}
               placeholder="Email"
               placeholderTextColor="#aaa"
               keyboardType="email-address"
             />
             <TextInput
               style={styles.input}
+              value={password}
+              onChangeText={(e) => setPassword(e)}
               placeholder="Password"
               placeholderTextColor="#aaa"
               secureTextEntry
             />
 
-            <MyButton title="Login" onPress={onLogin} />
+            <MyButton  title="Login" onPress={onLogin} />
           </View>
 
           {/* Forgot Password */}
