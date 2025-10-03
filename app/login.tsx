@@ -24,6 +24,12 @@ const Login = () => {
     // Implement your login logic here
     console.log("Logging in with:", { email, password });
     console.log("Login pressed");
+    // ...existing code...
+if (email === "admin" && password === "admin") {
+  router.push("/home" as any);   // Type assertion (not recommended)
+}
+// ...existing code...
+
   };
   const onRegister = () => router.push("/signup");
   const onForgot = () => router.push("/forgot");
